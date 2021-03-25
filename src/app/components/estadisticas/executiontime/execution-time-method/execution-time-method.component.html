@@ -1,0 +1,18 @@
+<div class="card" style="width: 100%;">
+    <div class="card-header text-center">
+        <h5>
+            <Strong>Top 10 métodos que tienen mayor tiempo de ejecución en promedio</Strong>
+        </h5>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <google-chart style="width: 100%;" #chart [type]="type" [data]="data" [columns]="columnNames" [options]="options">
+            </google-chart>
+        </li>
+        <li class="list-group-item">
+            <select (change)="escogerGrafico(cantidad_dias.value)" #cantidad_dias name="cantidad_dias" class="form-control form-control-sm">
+            <option *ngFor="let f of fechas ;let index = index"  [selected]="index == 0"  [value]="f.valor">{{ f.descripcion }}</option>
+          </select>
+        </li>
+    </ul>
+</div>

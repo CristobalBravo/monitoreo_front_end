@@ -1,0 +1,82 @@
+<center>
+    <div class="card border-secondary" style="max-width: 100%;">
+        <div class="card-header">
+            <h2>Configuración De Sugerencias</h2>
+        </div>
+        <div class="card-body text-secondary text-center">
+            <h5 class="card-title">Tolerancia</h5>
+            <p class="card-text">Escoge el parametro a establecer</p>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" (click)="buscar(method.value)" id="inlineRadio1" #method value="method" checked>
+                <label class="form-check-label" for="inlineRadio1">Method</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" (click)="buscar(controller.value)" id="inlineRadio2" #controller value="controller">
+                <label class="form-check-label" for="inlineRadio2">Controller</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" (click)="buscar(uri.value)" id="inlineRadio3" #uri value="uri">
+                <label class="form-check-label" for="inlineRadio3">Uri</label>
+            </div>
+            <br>
+            <br>
+            <h5>Configuración Actual</h5>
+            <hr>
+            <table class="table table-responsive-sm" style="align-items: center;">
+                <thead>
+                    <tr>
+                        <th>Tiempo máximo de ejecución</th>
+                        <th>Memoria máxima</th>
+                        <th>Memoria Usada</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ configuracionSugerencias.execution_time | percent }}</td>
+                        <td>{{ configuracionSugerencias.memory_peak | percent }}</td>
+                        <td>{{ configuracionSugerencias.memory_usage | percent }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <button *ngIf="mostrarBoton" type="button" (click)="mostrarFormulario()" class="btn btn-success btn-lg btn-block">Editar</button>
+            <div *ngIf="mostrar">
+                <form>
+                    <div class="form-group row">
+                        <label for="email5" class="col-sm-9 col-md-3 col-form-label">Tiempo máximo de ejecución : </label>
+                        <div class="col-sm-2 col-md-5">
+                            <input type="tel" #tiempo style="text-align: center;" [(ngModel)]="configuracionSugerenciasGuardar.execution_time" placeholder="0.2" class="form-control " name="execution_time" id="execution_time ">
+                        </div>
+                        <div>
+                            <label style="padding-top: 30%;">{{ configuracionSugerenciasGuardar.execution_time | percent}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email5" class="col-sm-9 col-md-3 col-form-label">Memoria máxima : </label>
+                        <div class="col-sm-2 col-md-5">
+                            <input type="tel" #memoria_maxima style="text-align: center;" [(ngModel)]="configuracionSugerenciasGuardar.memory_peak" placeholder="0.2" class="form-control" name="memory_peak" id="memory_peak ">
+                        </div>
+                        <div>
+                            <label style="padding-top: 30%;">{{ configuracionSugerenciasGuardar.memory_peak | percent}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email5" class="col-sm-9 col-md-3 col-form-label ">Memoria usada : </label>
+                        <div class="col-sm-2 col-md-5">
+                            <input type="tel" #memoria_usada style="text-align: center;" [(ngModel)]="configuracionSugerenciasGuardar.memory_usage" placeholder="0.2" class="form-control" name="memory_usage" id="memory_usage ">
+                        </div>
+                        <div>
+                            <label style="padding-top: 30%;">{{ configuracionSugerenciasGuardar.memory_usage | percent}}</label>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group row">
+                        <div class="col">
+                            <button type="button" (click)="editar(tiempo.value,memoria_maxima.value, memoria_usada.value)" class="btn btn-primary btn btn-block">guardar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</center>

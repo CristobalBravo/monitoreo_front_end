@@ -1,0 +1,118 @@
+<!--div class="container pt-5">
+    <div class="row justify-content-sm-center">
+        <div class="col-sm-11 col-md-15">
+            <div class="card border-info">
+                <div class="card-header" style="text-align: center; background-color: #438eb9 ;">
+                    <h5>Ingreso De Usuarios</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 text-center">
+                            <br>
+                            <img src="https://www.itsitio.com/wp-content/uploads/2019/04/itsitio-cloud-monitoring-nota-780x405.jpg" width="100%" height="50%">
+                            <br>
+                            <br>
+                            <h4 class="text-center">Monitoreo Adecca</h4>
+                        </div>
+                        <div class="col-md-8">
+                            <form class="form-signin" (ngSubmit)="login(f)" #f="ngForm">
+                                <div style="text-align: center;">
+                                    <label for=""><i class="fa fa-users" aria-hidden="true"> Rut</i>
+                                      </label>
+                                </div>
+                                <input type="text" [(ngModel)]="loginModel.rut" class="form-control mb-2" name="rut" value="holas" style="text-align: center;" formatRut placeholder="11.111.111-1" required autofocus>
+                                <div style="text-align: center;">
+                                    <label><i class="fa fa-key" aria-hidden="true"> Contraseña</i>
+                                      </label>
+                                </div>
+
+                                <input type="password" [(ngModel)]="loginModel.password" style="text-align: center;" name="password" class="form-control mb-2" placeholder="Contraseña" required>
+                                <label class="checkbox float-left">
+                                  <input type="checkbox" name="recuerdame" [(ngModel)]="recuerdame" checked>
+                                  Recuerdame
+                                </label>
+                                <button class="btn btn-lg btn-outline-primary btn-block mb-1 " type="submit">Ingresar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div-->
+<ng-template #contenido let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Creación de Contraseña</h4>
+    </div>
+    <div class="modal-body">
+        <p>Le hemos enviado un codigo a su correo electrónico que permitira cambiar su contraseña</p>
+        <label for="">Codigo</label>
+        <input class="form-control" type="text" name="" id="" placeholder="código de verficacion" #codigo>
+        <label for="">Contraseña</label>
+        <input class="form-control" type="password" name="" id="" placeholder="Ingrese su contraseña" #password1>
+        <label for="">Repetir Contraseña</label>
+        <input class="form-control" type="password" name="" id="" placeholder="Repita su Contraseña" #password2>
+        <br>
+        <div *ngIf="distinto">
+            <span style="color:red">Las contraseñas no son iguales</span>
+        </div>
+        <button type="button" class="btn btn-outline-info" (click)="changePassword(codigo.value, password1.value, password2.value)">Cambiar</button>
+    </div>
+    <div class="modal-footer">
+
+        <p style="text-align: center;">Sistema De Monitoreo de Alertas Tempranas Adecca</p>
+    </div>
+</ng-template>
+
+
+<section class="login p-fixed d-flex text-center bg-primary common-img-bg">
+    <div class="auth-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="login-card card-body auth-body">
+                    <form class="md-float-material" form class="form-signin" (ngSubmit)="login(f)" #f="ngForm">
+
+                        <div class="auth-box">
+                            <div class="text-center">
+                                <img src="assets/images/logo-adecca.png" style="align-items: center;" alt="logo.png">
+                                <br>
+                                <h3 style="color: blue;">Sistema De Monitoreo y Alertas Tempranas - Adecca UBB</h3>
+                            </div>
+                            <div class="row m-b-20">
+                                <div class="col-md-12">
+                                    <h3 class="text-center txt-primary">Autenticación de Usuario</h3>
+                                    <span style="color: gray;">Ingrese sus credenciales</span>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="input-group">
+                                <input type="text" [(ngModel)]="loginModel.rut" name="rut" class="form-control" formatRut placeholder="11.111.111-1" required>
+                                <span class="md-line"></span>
+                            </div>
+                            <div class="input-group">
+                                <input type="password" [(ngModel)]="loginModel.password" name="password" class="form-control" placeholder="Ingrese su contraseña">
+                                <span class="md-line"></span>
+                            </div>
+                            <div class="row m-t-25 text-left">
+                                <div class="col-sm-7 col-xs-12">
+                                    <div class="checkbox-fade fade-in-primary">
+                                        <label>
+                      <input type="checkbox" value="{{ recuerdame }}" name="recuerdame"[(ngModel)]="recuerdame"  [checked]="recuerdame">
+                      <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+                      <span class="text-inverse" name="recuerdame" >Recuerdame</span>
+                    </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-t-30">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Ingresar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

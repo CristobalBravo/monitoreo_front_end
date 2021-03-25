@@ -1,0 +1,30 @@
+<div class="card" style="width: 100%;">
+    <div class="card-header text-center">
+        <h5><strong>Top páginas más visitadas</strong></h5>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Top</th>
+                        <th scope="col">URI</th>
+                        <th scope="col">Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of data; let i = index ">
+                        <th scope="row">{{ i+1 }}</th>
+                        <td> {{ data.uri }}</td>
+                        <td>{{ data.cantidad | number }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+        <li class="list-group-item">
+            <select (change)="escogerGrafico(cantidad_dias.value)" #cantidad_dias name="cantidad_dias" class="form-control form-control-sm">
+       <option *ngFor="let f of fechas ;let index = index"  [selected]="index == 0"  [value]="f.valor">{{ f.descripcion }}</option>
+    </select>
+        </li>
+    </ul>
+</div>

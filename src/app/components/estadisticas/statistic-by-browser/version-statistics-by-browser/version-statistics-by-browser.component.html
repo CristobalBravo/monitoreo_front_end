@@ -1,0 +1,59 @@
+<div class="card">
+    <div class="card-header text-center" style="width: 100%;">
+        <h5><strong>Tops versiones según navegador</strong></h5>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <select (change)="chooseBrowser(browserName.value)" #browserName name="browserName" class="form-control form-control-sm">
+              <option *ngFor="let browser of browsers;let index = index" [selected]="index == 0"  [value]="browser.browser_name">{{ browser.browser_name }}</option>
+            </select>
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col">
+                    <h6>Descendentes</h6>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Top</th>
+                                <th>Versión</th>
+                                <th>Cantidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let asc of ascendentes; let i=index">
+                                <td>{{ i + 1 }}</td>
+                                <td>{{ asc.browser_version }}</td>
+                                <td>{{ asc.cantidad | number }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col">
+                    <h6>Ascendentes</h6>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Top</th>
+                                <th>Versión</th>
+                                <th>Cantidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let desc of descendentes; let i=index">
+                                <td>{{ i + 1 }}</td>
+                                <td>{{ desc.browser_version }}</td>
+                                <td>{{ desc.cantidad | number }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <select (change)="escogerGrafico(cantidad_dias.value)" #cantidad_dias name="cantidad_dias" class="form-control form-control-sm">
+            <option *ngFor="let f of fechas ;let index = index"  [selected]="index == 0"  [value]="f.valor">{{ f.descripcion }}</option>
+         </select>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,35 @@
+<div class="card-header text-center">
+    <h5><strong>Top navegadores usados por los usuarios</strong></h5>
+</div>
+<ul class="list-group list-group-flush">
+    <li class="list-group-item">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Navegador</th>
+                    <th style="text-align: right;">
+                        <label class="text-center">Usuarios <i class="fa fa-arrow-down" aria-hidden="true"></i></label>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of datas; let i = index ">
+                    <td *ngIf="data.nombre"> {{ i+1 }}. {{ data.nombre }}</td>
+                    <td *ngIf="data.nombre" style="text-align: right;">{{ data.cantidad | number }} ({{ (((data.cantidad / total)*100) | number : '1.2-2') }} %)</td>
+                </tr>
+                <tr>
+                    <th ></th>
+                    <td style="text-align: right;">
+                        % del total: {{ porcentajeTotal }} %
+                        <br><strong>{{ total | number }}</strong>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </li>
+    <li class="list-group-item">
+        <select (change)="escogerGrafico(cantidad_dias.value)" #cantidad_dias name="cantidad_dias" class="form-control form-control-sm">
+         <option *ngFor="let f of fechas ;let index = index"  [selected]="index == 0"  [value]="f.valor">{{ f.descripcion }}</option>
+      </select>
+    </li>
+</ul>

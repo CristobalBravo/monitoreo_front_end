@@ -1,0 +1,63 @@
+<div id="wrapper">
+    <!-- Sidebar -->
+    <div *ngIf="identity && identity.nombre" id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <br>
+            <li>
+                <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-2">
+                    <span class="sidebar-icon"> <i class="fa fa-bar-chart"> </i></span>
+                    <span class="sidebar-title">Estadísticas</span>
+                    <b class="caret"></b>
+                </a>
+                <ul id="submenu-2" class="panel-collapse collapse panel-switch" role="menu">
+                    <li><a routerLink="/estadisticas"><i class="fa fa-tachometer"></i>Dashboard</a></li>
+                    <li><a routerLink="/estadisticas/detalle/browser"><i class="fa fa-chrome"></i>Navagadores</a></li>
+                    <li><a routerLink="/estadisticas/detalle/memory"><i class="fa fa-thermometer-half"></i>Memoria</a></li>
+                    <li><a routerLink="/estadisticas/detalle/executionTime"><i class="fa fa-clock-o"></i>Tiempo Ejecución</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-3">
+                    <span class="sidebar-icon"> <i class="fa fa-comments-o"> </i></span>
+                    <span class="sidebar-title">Sugerencias</span>
+                    <b class="caret"></b>
+                </a>
+                <ul id="submenu-3" class="panel-collapse collapse panel-switch" role="menu">
+                    <li><a href="#"><i class="fa fa-caret-right"></i>Users</a></li>
+                    <li><a href="#"><i class="fa fa-caret-right"></i>Roles</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-4">
+                    <span class="sidebar-icon"> <i class="fa fa-exclamation-circle"> </i></span>
+                    <span class="sidebar-title">Alertas</span>
+                    <b class="caret"></b>
+                </a>
+                <ul id="submenu-4" class="panel-collapse collapse panel-switch" role="menu">
+                    <li><a href="#"><i class="fa fa-caret-right"></i>Users</a></li>
+                    <li><a href="#"><i class="fa fa-caret-right"></i>Roles</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-5">
+                    <span class="sidebar-icon"> <i class="fa fa-cog"> </i></span>
+                    <span class="sidebar-title">Configuracion</span>
+                    <b class="caret"></b>
+                </a>
+                <ul id="submenu-5" class="panel-collapse collapse panel-switch" role="menu">
+                    <li><a routerLink="/configuracion/sugerencias"><i class="fa fa-caret-right"></i>Sugerencias</a></li>
+                    <li><a routerLink="/configuracion/usuarios"><i class="fa fa-caret-right"></i>Usuarios</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+</div>

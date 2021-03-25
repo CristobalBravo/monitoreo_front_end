@@ -1,0 +1,100 @@
+<div class="card">
+    <div class="card-header text-center">
+        <h3>Alertas de Errores de Adecca</h3>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <label for=""> <h5><strong>Errores por plataforma</strong></h5></label>
+            <google-chart style="width: 100%;" #chart [type]="typeP" [data]="dataP" [columns]="columnNamesP" [options]="optionsP">
+            </google-chart>
+        </div>
+        <div class="col text-center">
+            <label for=""> <h5><strong>Top 5 código de errores</strong></h5></label>
+            <google-chart style="width: 90%;" #chart [type]="typeB" [data]="dataB" [columns]="columnNamesB" [options]="optionsB">
+            </google-chart>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col text-center">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" (click)="db()" id="inlineRadio1" [checked]="checkedDB">
+                <label class="form-check-label" for="inlineRadio1">Base de Datos</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" (click)="php()" id="inlineRadio2" [checked]="checkedPHP">
+                <label class="form-check-label" for="inlineRadio2">PHP</label>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="row mb-2 ml-5">
+        <div class="col-4">
+            <input #error type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingrese el error">
+        </div>
+        <div class="col-2">
+            <button (click)="buscar(error.value)" class="btn btn-primary btn-sm">Buscar</button>
+        </div>
+        <div class="col-6"></div>
+        <br>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col">
+            <ul class="list-group list-group-flush" style="padding-left: 3%; padding-right: 3%;">
+
+                <div class="text-center align-content-center" style="text-align: right;">
+                    <table class="table table-responsive-xl table-striped " style="margin-left: auto; margin-right: auto;">
+                        <thead>
+                            <tr>
+                                <th>Nivel de criticidad</th>
+                                <th>Cantidad</th>
+                                <th>Usuarios afectados</th>
+                                <th>Plataforma</th>
+                                <th>Versión</th>
+                                <th>Código de error</th>
+                                <th *ngIf="mostrar==false">Archivo</th>
+                                <th *ngIf="mostrar==false">Línea</th>
+                                <th>Detalle</th>
+                                <th *ngIf="mostrar">Error</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let alerta of alertas | paginate: { itemsPerPage: 10, currentPage: p }">
+                                <td *ngIf="alerta.level<300">
+                                    <h6><span class="badge badge-info">Informativo</span></h6>
+                                </td>
+                                <td *ngIf="alerta.level==300">
+                                    <h6><span class="badge badge-warning">Advertencia</span></h6>
+                                </td>
+                                <td *ngIf="alerta.level==400">
+                                    <h6><span class="badge badge-danger">Peligro</span></h6>
+                                </td>
+                                <td>{{ alerta.cantidad | number}}</td>
+                                <td>{{ alerta.usuarios_afectados | number }}</td>
+                                <td>{{ alerta.platform }}</td>
+                                <td>{{ alerta.version }}</td>
+                                <td>{{ alerta.err_number }}</td>
+                                <td *ngIf="mostrar==false ">{{ alerta.file }}</td>
+                                <td *ngIf="mostrar==false ">{{ alerta.line }}</td>
+
+                                <td placement="bottom" *ngIf="mostrar " [ngbTooltip]="contenidoSql ">{{ (alerta.sql.length>48 )? (alerta.sql | slice:0:48) + '...': (alerta.sql) }}
+                                    <ng-template #contenidoSql>{{ alerta.sql }}</ng-template>
+                                </td>
+
+                                <td placement="bottom" [ngbTooltip]="contenidoError ">{{ (alerta.mensaje.length>48 )? (alerta.mensaje | slice:0:48) + '...': (alerta.mensaje) }}
+                                    <ng-template #contenidoError>{{ alerta.mensaje }}</ng-template>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <pagination-controls (pageChange)="p = $event" responsive="true" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+                </div>
+            </ul>
+        </div>
+    </div>
+</div>

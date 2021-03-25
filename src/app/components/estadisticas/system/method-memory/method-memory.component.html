@@ -1,0 +1,16 @@
+<div class="card" style="width: 100%;">
+    <div class="card-header text-center">
+        <h5><strong>Top 10 métodos que utilizan más memoria en promedio</strong></h5>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item" style="padding: 0%;">
+            <google-chart style="width: 98%;" #chart [type]="type" [data]="data" [columns]="columnNames" [options]="options" [height]="500">
+            </google-chart>
+        </li>
+        <li class="list-group-item">
+            <select (change)="escogerGrafico(cantidad_dias.value)" #cantidad_dias name="cantidad_dias" class="form-control form-control-sm">
+         <option *ngFor="let f of fechas ;let index = index"  [selected]="index == 0"  [value]="f.valor">{{ f.descripcion }}</option>
+      </select>
+        </li>
+    </ul>
+</div>

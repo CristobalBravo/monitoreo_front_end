@@ -1,0 +1,33 @@
+.header {
+    padding: 5px;
+    text-align: left;
+    background: #438eb9;
+    color: white;
+    font-size: 30px;
+}
+
+.salir:hover {
+    background-color: red;
+}
+
+.nombre {
+    color: black;
+    padding-left: 30px;
+    padding-right: 23px;
+}
+
+.divNombre {
+    padding-right: 10px;
+}
+
+.buttonSidebar {
+    padding-top: 10px;
+    padding-right: 20px;
+}
+
+.logo {
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 10px;
+    height: 40px;
+}

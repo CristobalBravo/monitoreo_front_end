@@ -1,0 +1,50 @@
+<div class="container">
+    <h3>{{ title }} Usuario</h3>
+    <hr>
+    <div class="row">
+        <div class="col-sm-3">
+            <button class="btn btn-outline-primary" routerLink="/configuraciones/usuario"> Volver</button>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col">
+            <form (ngSubmit)="guardar(f)" #f="ngForm">
+                <div class="form-group row ">
+                    <label for="nombre " class="col-sm-2 col-form-label ">Nombre : </label>
+                    <div class="col-sm-10 ">
+                        <input type="text " [(ngModel)]="usuario.nombre" class="form-control " name="nombre" id="nombre " placeholder="Ingrese solo su nombre " required>
+                    </div>
+                </div>
+                <div class="form-group row ">
+                    <label for="apellido " class="col-sm-2 col-form-label ">Apellido : </label>
+                    <div class="col-sm-10 ">
+                        <input type="text " [(ngModel)]="usuario.apellido" class="form-control " name="apellido" id="apellido " placeholder="Ingrese solo su apellido " required>
+                    </div>
+                </div>
+                <div class="form-group row ">
+                    <label for="apellido " class="col-sm-2 col-form-label ">Email : </label>
+                    <div class="col-sm-10 ">
+                        <input type="email " [(ngModel)]="usuario.email" class="form-control " name="email" id="email " placeholder="Email@email.com" required>
+                    </div>
+                </div>
+                <div class="form-group row ">
+                    <label for="rut " class="col-sm-2 col-form-label ">Rut : </label>
+                    <div class="col-sm-10 ">
+                        <input type="text " [(ngModel)]="usuario.rut" class="form-control " name="rut" id="rut " formatRut validateRut placeholder="11111111-1 " required>
+                    </div>
+                </div>
+                <div class="form-group row ">
+                    <label for="perfil " class="col-sm-2 col-form-label ">Perfil : </label>
+                    <div class="col-sm-10 ">
+                        <select (change)="escogerPerfil(perfil.value)" #perfil name="perfil" class="form-control ">
+                        <option *ngFor="let perfil of perfiles ;let index = index"  [selected]="index == escogido"  [value]="perfil.valor">{{ perfil.nombre }}</option>
+                     </select>
+                    </div>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+            </form>
+        </div>
+    </div>
+</div>

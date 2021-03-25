@@ -1,0 +1,29 @@
+<div class="card" style="width: 100%;">
+    <div class="card-header text-center">
+        <h5><strong>Versión de navegadores más utilizado</strong></h5>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Versión</th>
+                        <th scope="col">Cantidad</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of datas; let i = index">
+                        <th *ngIf="data.browser">{{ data.browser }}</th>
+                        <td *ngIf="data.browser">{{ data.browser_version }}</td>
+                        <td *ngIf="data.browser">{{ data.cantidad | number }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+        <li class="list-group-item">
+            <button type="button" routerLink="../estadisticas/browser" class="btn btn-outline-primary btn-sm btn-block">Ver más</button>
+        </li>
+    </ul>
+</div>

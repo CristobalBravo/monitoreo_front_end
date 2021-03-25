@@ -1,0 +1,57 @@
+<h3>Estadísticas de los Usuario</h3>
+<hr>
+<div class="row">
+    <div class="col-sm-9">
+        <app-grafic-user-by-date></app-grafic-user-by-date>
+    </div>
+    <div class="col-sm-3">
+        <div class="row">
+            <div class="card" style="width: 100%;">
+                <div class="card-header text-center">
+                    <h5><strong>Usuarios Online</strong></h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Conectados: 100 </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="card" style="width: 100%; ">
+                <div class="card-header text-center">
+                    <h5><strong>Dispositivos usados por los usuarios</strong></h5>
+                </div>
+                <ul class="list-group list-group-flush" style="align-items: center;">
+                    <app-donuts></app-donuts>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<div class="row">
+    <div class="col-sm-3">
+        <app-top-users></app-top-users>
+    </div>
+    <div class="col-sm-3">
+        <app-top-pages></app-top-pages>
+    </div>
+    <div class="col-sm-3">
+        <div class="card" style="width: 100%;">
+            <app-statistic-by-browser></app-statistic-by-browser>
+        </div>
+        <!-- <app-tops-type-modulo></app-tops-type-modulo> -->
+    </div>
+    <div class="col-sm-3">
+        <app-statistics-by-browser-version></app-statistics-by-browser-version>
+        <!-- <app-statistics-by-so></app-statistics-by-so> -->
+    </div>
+</div>
+<!-- <br>
+<div class="row">
+    <div class="col-sm-3">
+        <div class="card" style="width: 100%;">
+            <app-statistic-by-browser></app-statistic-by-browser>
+        </div>
+    </div>
+</div> -->

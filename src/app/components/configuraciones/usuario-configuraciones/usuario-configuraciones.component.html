@@ -1,0 +1,43 @@
+<h3>Configuración de usuarios</h3>
+<hr>
+<a routerLink="/configuraciones/usuario/crear" class="btn btn-outline-primary">Crear usuario</a>
+<br>
+<br>
+<h5>Listado de Usuarios</h5>
+<br>
+<div class="table-responsive">
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Rut</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Perfil</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let usuario of usuarios | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index ">
+                <td scope="row">{{ usuario.nombre }}</td>
+                <td>{{ usuario.apellido }}</td>
+                <td>{{ usuario.rut | rut }}</td>
+                <td>{{ usuario.email }}</td>
+                <td>{{ usuario.perfil }}</td>
+                <td>
+                    <button class="btn btn-warning" [routerLink]="['/configuraciones/usuario/', usuario._id]">
+                      <i class="fa fa-pencil"  aria-hidden="true"></i>
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-danger" (click)="eliminar(usuario,i)">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </button>
+                </td>
+            </tr>
+    </table>
+    <div class="text-center">
+        <pagination-controls (pageChange)="p = $event" responsive="true" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+    </div>
+</div>
